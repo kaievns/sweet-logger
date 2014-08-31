@@ -1,13 +1,10 @@
 # SweetLogger
 
-This little gem fixes the messed up log entries issue in Rails when it's run
-in a multi-threaded environment (for example without the `Rack::Lock` middleware)
+This little gem solves two issues with rails `ActiveSuppot::Logger` when it's
+running in a multi-threaded environment.
 
-Basically it doesn't let the log entries to overlap when you have several parallel
-requests handled by rails in different threads.
-
-Also it solves the problem of filtering particular log entries out (for example
-`/assets/*`) when rails runs in multiple threads without the requests lock.
+1. It doesn't let log entries for concurrent requests overlap
+2. Adds a log silencer (for `/assets/`) that works correctly with multiple threads
 
 ## Installation
 
@@ -18,6 +15,19 @@ gem 'sweet-logger'
 ```
 
 Enjoy!
+
+## Rack::Lock
+
+By default in the `development` environment, Rails adds the `Rack::Lock` middleware
+so that the rack server will process only one request at a time.
+
+If you need to enable the real multi-threaded processing in the development
+environment, add this to your `config/application.rb`
+
+```ruby
+  config.middleware.delete Rack::Lock
+```
+
 
 ## Silencer
 
