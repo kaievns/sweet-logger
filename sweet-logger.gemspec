@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nemshilov@gmail.com"]
   spec.summary       = %q{Betterer Rails logger that handles multi-threading}
   spec.description   = %q{Betterer Rails logger that handles multi-threading well}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/MadRabbit/sweet-logger"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
