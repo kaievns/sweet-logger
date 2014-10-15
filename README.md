@@ -28,6 +28,16 @@ environment, add this to your `config/application.rb`
   config.middleware.delete Rack::Lock
 ```
 
+Also, you might going to need add the folloing to your `config/development.rb` if your
+web page makes several requests to your app on a page load
+
+```ruby
+  config.eager_load = true
+```
+
+That will prevent race conditions on code-reloads when you make changes to your app
+code.
+
 
 ## Silencer
 
